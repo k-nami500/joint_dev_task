@@ -5,7 +5,7 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-  names = ["田中", "佐藤", "佐々木", "高橋","斎藤"]
+  names.push("斉藤")
   puts names
 
 end
@@ -23,8 +23,8 @@ def q3
   numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9]
 
   # 以下に回答を記載
-  puts numbers.length
-
+  puts numbers.count(3)
+  
 
 end
 
