@@ -60,7 +60,7 @@ def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-  array.map!{ |x| x.to_i  }
+  array.map!(&:to_i) 
   # 以下は変更しないで下さい
   p array
 end
@@ -69,18 +69,22 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
 # 以下に回答を記載
-  upper_case_programming_languages = programming_languages
-  programming_languages.map!{ |x| x.capitalize }
-  upper_case_programming_languages.map!{ |y| y.upcase }
-  # 以下は変更しないで下さい
+  programming_languages = programming_languages.map!(&:capitalize)
   p programming_languages
+
+  upper_case_programming_languages = programming_languages.map!(&:upcase)
   p upper_case_programming_languages
+
+
 end
 
 def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
+  names.each.with_index(1) do |user,i|
+    puts "会員No.#{i} #{user}さん"
+  end
 
 end
 
@@ -88,20 +92,33 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-
+  foods.each do |food|
+    if food.include? "うに"
+      puts "好物です"
+    else
+      puts "まあまあ好きです"
+    end
+  end
 end
 
 def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+  puts "ユーザーの趣味一覧"
+  new_sports = sports.flatten
+  new_sports1 = new_sports.uniq
+  new_sports1.each.with_index(1) do |new_sport1,i|
+    puts "No.#{i} #{new_sport1}"
+  end
 end
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
+  data1 = data[:user]
+  puts data1[:name]
 
 end
 
@@ -110,7 +127,9 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  user_data[:age] = update_data[:age]
+  user_data[:address] = update_data[:address]
+  puts user_data
 end
 
 def q14
