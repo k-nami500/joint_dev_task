@@ -212,9 +212,10 @@ end
 
 class Item
   # 以下を修正して下さい
+  attr_reader :name
 
-  def initialize(name)
-    @name = name
+  def initialize(**params)
+    @name = params[:name]
   end
 end
 
@@ -225,12 +226,38 @@ def q19
 end
 
 class UserQ20
-  # 以下に回答を記載
+  #以下に回答を記載
+  attr_reader :name,:age
+
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
 end
 
 class Zoo
   # 以下に回答を記載
+
+  def initialize(**params)
+    @name = params[:name]
+    @entry_fee = params[:entry_fee]
+  end
+
+  def info_entry_fee(user)
+    @name = user.name
+    @age = user.age
+
+    if @age >= 0 && @age <= 5
+      puts "#{@name}さんの入場料金は#{@entry_fee[:infant]}円です。"
+    elsif @age >= 6 && @age <= 12
+      puts "#{@name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    elsif @age >= 13 && @age <= 64
+      puts "#{@name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    else @age >= 65 && @age <= 120
+      puts "#{@name}さんの入場料金は#{@entry_fee[:senior]}円です。"
+    end
+  end
 
 end
 
@@ -246,7 +273,19 @@ def q20
     UserQ20.new(name: "ぎん", age: 108)
   ]
 
-  users.each do |user|
-    zoo.info_entry_fee(user)
-  end
+   users.each do |user|
+      zoo.info_entry_fee(user)
+   end
+
+  #  users = [
+  #   {name: "たま", age: 3},
+  #   {name: "ゆたぼん", age: 10},
+  #   {name: "あじー", age: 32},
+  #   {name: "ぎん", age: 108}
+  # ]
+  #
+  # users.each do |user|
+  #     zoo.info_entry_fee(user)
+  # end
+
 end
