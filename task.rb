@@ -247,16 +247,31 @@ class Zoo
   def info_entry_fee(user)
     @name = user.name
     @age = user.age
+    @infant =  @entry_fee[:infant]
+    @children = @entry_fee[:children]
+    @adult = @entry_fee[:adult]
+    @senior = @entry_fee[:senior]
 
-    if @age >= 0 && @age <= 5
-      puts "#{@name}さんの入場料金は#{@entry_fee[:infant]}円です。"
-    elsif @age >= 6 && @age <= 12
-      puts "#{@name}さんの入場料金は#{@entry_fee[:children]}円です。"
-    elsif @age >= 13 && @age <= 64
-      puts "#{@name}さんの入場料金は#{@entry_fee[:adult]}円です。"
-    else @age >= 65 && @age <= 120
-      puts "#{@name}さんの入場料金は#{@entry_fee[:senior]}円です。"
+    case @age
+    when 0..5
+      puts "#{@name}さんの入場料金は#{@infant}円です。"
+    when 6..12
+      puts "#{@name}さんの入場料金は#{@children}円です。"
+    when 13..64
+      puts "#{@name}さんの入場料金は#{@adult}円です。"
+    else 65..120
+      puts "#{@name}さんの入場料金は#{@senior}円です。"
     end
+    #　　　　　　↑　↑　↑
+    # if  @age >= 0 &&  @age<= 5
+    #   puts "#{@name}さんの入場料金は#{@infant}円です。"
+    # elsif @age >= 6 && @age <= 12
+    #   puts "#{@name}さんの入場料金は#{@children}円です。"
+    # elsif @age >= 13 && @age <= 64
+    #   puts "#{@name}さんの入場料金は#{@adult}円です。"
+    # else @age >= 65 && @age <= 120
+    #   puts "#{@name}さんの入場料金は#{@senior}円です。"
+    # end
   end
 
 end
