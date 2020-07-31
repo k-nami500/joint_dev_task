@@ -252,16 +252,14 @@ class Zoo
     @adult = @entry_fee[:adult]
     @senior = @entry_fee[:senior]
 
-    case @age
-    when 0..5
-      puts "#{@name}さんの入場料金は#{@infant}円です。"
-    when 6..12
-      puts "#{@name}さんの入場料金は#{@children}円です。"
-    when 13..64
-      puts "#{@name}さんの入場料金は#{@adult}円です。"
-    else 65..120
-      puts "#{@name}さんの入場料金は#{@senior}円です。"
+    price_by_age = case @age
+    when 0..5 then @infant
+    when 6..12 then @children
+    when 13..64 then @adult
+    else @senior
     end
+
+    puts "#{@name}さんの入場料金は#{price_by_age}円です。"
     #　　　　　　↑　↑　↑
     # if  @age >= 0 &&  @age<= 5
     #   puts "#{@name}さんの入場料金は#{@infant}円です。"
